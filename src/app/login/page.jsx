@@ -1,6 +1,6 @@
 "use client"
 
-import Nav from "@/components/Nav"
+import Nav from "../components/Nav"
 import "./style.scss"
 
 export default function Login() {
