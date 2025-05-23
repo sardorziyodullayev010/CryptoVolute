@@ -1,0 +1,399 @@
+@import '../assets/styles/_globals.scss';
+
+// Переменные
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --accent-color: #3b82f6;
+    --text-color: #1f2937;
+    --light-text: #6b7280;
+    --background: #ffffff;
+    --card-bg: #f8fafc;
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+// Глобальные стили
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background: var(--background);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+// Навигация
+.navbar {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: var(--secondary-color);
+        }
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+
+            &:after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: var(--gradient);
+                transition: width 0.3s ease;
+            }
+
+            &:hover:after {
+                width: 100%;
+            }
+
+            &.active {
+                color: var(--primary-color);
+                
+                &:after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+// Главная страница
+.home-page {
+    background-color: #000;
+    color: #fff;
+    min-height: 100vh;
+
+    .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/crypto-hero.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 120px 0;
+        text-align: center;
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        }
+
+        p {
+            font-size: 1.3rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+    }
+
+    .features {
+        padding: 80px 0;
+        background-color: #111;
+
+        h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #fff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: translateY(-5px);
+            }
+
+            h3 {
+                color: #fff;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                color: #ccc;
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
+
+    .crypto-stats {
+        padding: 80px 0;
+        background-color: #000;
+
+        h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #fff;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+
+            h3 {
+                color: #fff;
+                margin-bottom: 1rem;
+            }
+
+            .price {
+                font-size: 1.5rem;
+                color: #fff;
+                margin-bottom: 0.5rem;
+            }
+
+            .change {
+                &.positive {
+                    color: #00ff00;
+                }
+                &.negative {
+                    color: #ff0000;
+                }
+            }
+        }
+    }
+
+    .newsletter {
+        padding: 80px 0;
+        background-color: #111;
+        text-align: center;
+
+        h2 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #ccc;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+
+            input {
+                flex: 1;
+                padding: 12px;
+                border: none;
+                border-radius: 5px;
+                background: rgba(255, 255, 255, 0.1);
+                color: #fff;
+
+                &::placeholder {
+                    color: #999;
+                }
+            }
+        }
+    }
+
+    .btn {
+        padding: 12px 24px;
+        border-radius: 5px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &.btn-red {
+            background-color: #ff0000;
+            color: #fff;
+            &:hover {
+                background-color: #cc0000;
+            }
+        }
+
+        &.btn-white {
+            background-color: #fff;
+            color: #000;
+            &:hover {
+                background-color: #ccc;
+            }
+        }
+
+        &.btn-blue {
+            background-color: #0066ff;
+            color: #fff;
+            &:hover {
+                background-color: #0052cc;
+            }
+        }
+
+        &.btn-yellow {
+            background-color: #ffcc00;
+            color: #000;
+            &:hover {
+                background-color: #e6b800;
+            }
+        }
+    }
+}
+
+// Кнопки
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--gradient);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+}
+
+// Анимации
+.fade-in {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+    .navbar {
+        .nav-links {
+            display: none;
+        }
+    }
+
+    .home-page {
+        .hero {
+            padding: 4rem 0;
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .features, .cta {
+            padding: 3rem 0;
+        }
+    }
+}
+
+// Утилиты
+.text-center {
+    text-align: center;
+}
+
+.mb-3 {
+    margin-bottom: 1.5rem;
+}
+
+// Сетки
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
